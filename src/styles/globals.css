@@ -1,0 +1,8 @@
+body {
+    background-image: url('../../public/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .header{
+    width: 100vw !important; 
+  }

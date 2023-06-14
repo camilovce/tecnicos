@@ -1,38 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Technician } from "../../interfaces/Technicians";
-import { getAllTechnicians } from "../../pages/api/techniciansApi";
 import { Activity } from "../../interfaces/Activity";
 import { getAllActivities } from "../api/activityApi";
-import { Pool } from "pg";
 import { useRouter } from 'next/router';
 import { Table } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { createTables } from "../../utils/createTables";
-import { getTechnicians } from "../api/techniciansApi2";
-import styles from "./TechniciansCreate.module.css";
+import styles from "./ActivitiesCreate.module.css";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
-const TechnicianPage: React.FC = () => {
-  const [technicians, setTechnicians] = useState<Technician[]>([]);
+const ActivitiesPage: React.FC = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
-  const [value, setValue] = useState<number[]>([1, 3]);
   const router = useRouter();
+  const [value, setValue] = useState<number[]>([1, 3]);
 
   useEffect(() => {
-    loadTechnicians();
     loadActivities();
   }, []);
 
-
-  const loadTechnicians = async () => {
-    try {
-      const response = await getAllTechnicians();
-      setTechnicians(response);
-    } catch (error) {
-      console.log("Error loading technicians:", error);
-    }
-  };
 
   const loadActivities = async () => {
     try {
@@ -48,13 +31,14 @@ const TechnicianPage: React.FC = () => {
 
   return (
     <>
-      <header className={"m-1 p-2"}>
+    <header className={"m-1 p-2"}>
         <div
           className={`d-flex justify-content-between align-items-center mb-4 ${styles.header}`}
         >
-          <h1 className={`mb-0 ${styles.title}`}>Gestión de Técnicos</h1>
+          <h1 className={`mb-0 ${styles.title}`}>Gestión de Actividades</h1>
         </div>
       </header>
+
       <nav className={"d-flex justify-content-between"}>
         <ToggleButtonGroup
           type="checkbox"
@@ -66,34 +50,10 @@ const TechnicianPage: React.FC = () => {
           </ToggleButton>
         </ToggleButtonGroup>
       </nav>
-
-      <div className={`${styles.container} m-2 p-3`}>
-        <div className={`table-responsive ${styles.tableWrapper}`}>
-          <Table
-            className={`table table-bordered table-striped ${styles.table}`}
-          >
-            <thead>
-              <tr>
-                <th>Técnicos</th>
-                <th>Estado</th>
-                <th>Sucursal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {technicians.map((technician) => (
-                <tr key={technician.id}>
-                  <td>{technician.name}</td>
-                  <td>{technician.status ? "Activo" : "Inactivo"}</td>
-                  <td>{technician.branch}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-
-        <h2 className={`mt-4 mb-3 ${styles.activitiesTitle}`}>
-          Actividades realizadas
-        </h2>
+      
+        <h1 className={`mt-4 mb-3 ${styles.activitiesTitle}`}>
+          Lista de Actividades
+        </h1>
         <div className={`table-responsive ${styles.tableWrapper}`}>
           <Table className={`table table-bordered ${styles.activitiesTable}`}>
             <thead>
@@ -116,9 +76,9 @@ const TechnicianPage: React.FC = () => {
             </tbody>
           </Table>
         </div>
-      </div>
+      
     </>
   );
 };
 
-export default TechnicianPage;
+export default ActivitiesPage;

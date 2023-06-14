@@ -2,26 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { Container, ListGroup } from 'react-bootstrap';
 import styles from '../styles/home.module.css';
-import { title } from 'process';
 
 const HomePage: React.FC = () => {
-  return (<>
-    <Container className={`${styles.container} my-5`}>
-      <h1 className="mb-4">Bienvenido a la aplicación de gestión de técnicos de soporte</h1>
-      <h3 className='m-1'>Selecciona una opción:</h3>
-      <ListGroup>
-        <ListGroup.Item>
-          <Link href="/TechniciansCreate">
-            Gestión de Técnicos
-          </Link>
-        </ListGroup.Item>
-        <ListGroup.Item>
-          <Link href="/activities">
-            Gestión de Actividades
-          </Link>
-        </ListGroup.Item>
-      </ListGroup>
-    </Container>
+  return (
+    <>
+      <header className={`${styles.header} p-0 text-center`}>
+        <h1 className={`${styles.title} mx-auto rounded border border-primary bg-light rounded-pill`}>
+          Bienvenido a la aplicación de gestión de técnicos de soporte
+        </h1>
+        <h3 className="m-1">Selecciona una opción:</h3>
+      </header>
+      <Container className={`my-5 p-0 text-center`}>
+        <ListGroup className={'w-100 mx-auto'}>
+          <ListGroup.Item>
+            <Link href="/TechniciansCreate">Gestión de Técnicos</Link>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Link href="/ActivitiesCreate">Gestión de Actividades</Link>
+          </ListGroup.Item>
+        </ListGroup>
+      </Container>
     </>
   );
 };
