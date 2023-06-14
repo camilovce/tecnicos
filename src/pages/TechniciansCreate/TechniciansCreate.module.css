@@ -1,0 +1,30 @@
+/* Set custom colors for tables */
+.custom-table {
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+  }
+  
+  .custom-table thead th {
+    background-color: #343a40;
+    color: #fff;
+  }
+  
+  .custom-table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f1f3f5;
+  }
+  
+  .custom-table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  
+  /* Set margins for tables */
+  .custom-table-container {
+    margin-top: 2rem;
+  }
+  
+  .custom-table-container:first-child {
+    margin-top: 0;
+  }
+
+  
+  
